@@ -1,0 +1,5 @@
+langchain 
+requests 
+openai
+langchain_community
+langchain-openai
