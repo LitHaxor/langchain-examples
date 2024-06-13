@@ -3,6 +3,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain.chains.retrieval_qa.base import RetrievalQA
 from langchain_openai.chat_models import ChatOpenAI
+from reduadant_filter import RedundantFilterRetriver
 
 import langchain
 langchain.debug = True
@@ -18,7 +19,12 @@ db = Chroma(
     embedding_function=embeddings,
 )
 
-retriever = db.as_retriever()
+# retriever = db.as_retriever()
+
+retriever = RedundantFilterRetriver(
+    embeddings=embeddings,
+    chroma=db
+)
 
 
 chain = RetrievalQA.from_chain_type(
