@@ -6,3 +6,5 @@ langchain-openai
 python-dotenv
 langchain-openai
 chromadb
+numpy
+matplotlib
